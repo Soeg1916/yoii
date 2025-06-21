@@ -54,8 +54,7 @@ class RateLimiter:
         current_time = time.time()
         self.action_times.append(current_time)
         
-        remaining_actions = self.max_actions - len(self.action_times)
-        self.logger.info(f"Action recorded. {remaining_actions} actions remaining in current window")
+        self.logger.info("Action recorded")
     
     def get_stats(self) -> dict:
         """Get current rate limiter statistics"""
