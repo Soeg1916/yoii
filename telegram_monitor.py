@@ -30,9 +30,9 @@ class TelegramMonitor:
         self.logger = logging.getLogger(__name__)
         self.client: Optional[TelegramClient] = None
         self.rate_limiter = RateLimiter(
-            max_actions=config.max_comments_per_hour,
-            time_window=3600  # 1 hour in seconds
-        )
+    max_actions=100,  # 25 comments (or higher like 150, 200)
+    time_window=600   # 10 minutes in seconds
+)
         self.processed_messages: Set[int] = set()
         self.target_channels = {}  # channel_username -> entity mapping
         self.monitored_channels = []
